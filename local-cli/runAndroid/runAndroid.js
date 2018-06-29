@@ -67,9 +67,11 @@ function runAndroid(argv, config, args) {
 }
 
 function getAdbPath() {
-  return process.env.ANDROID_HOME
-    ? process.env.ANDROID_HOME + '/platform-tools/adb'
-    : 'adb';
+    let isWindows = process.platform === "win32";
+    return process.env.ANDROID_HOME
+      ? process.env.ANDROID_HOME + (isWindows? "\\platform-tools\\adb.exe":"/platform-tools/adb.exe")
+      : 'adb';
+  
 }
 
 // Runs ADB reverse tcp:8081 tcp:8081 to allow loading the jsbundle from the packager
