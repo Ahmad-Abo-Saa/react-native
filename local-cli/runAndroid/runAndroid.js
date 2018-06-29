@@ -67,9 +67,8 @@ function runAndroid(argv, config, args) {
 }
 
 function getAdbPath() {
-    let isWindows = process.platform === "win32";
     return process.env.ANDROID_HOME
-      ? process.env.ANDROID_HOME + (isWindows? "\\platform-tools\\adb.exe":"/platform-tools/adb.exe")
+      ? process.env.ANDROID_HOME + "/platform-tools/adb.exe"
       : 'adb';
   
 }
